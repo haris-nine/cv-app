@@ -1,23 +1,23 @@
-import Inputs from './Inputs';
+import Inputs from './Inputs'
 import {
   personalInfoInputs,
   educationInputs,
   workExperienceInputs,
   technicalSkillsInputs,
   languagesInputs,
-} from './data';
+} from './data'
 
-function Section({ 
-  currentSection, 
-  setCurrentSection, 
-  formData, 
-  sections, 
+function Section({
+  currentSection,
+  setCurrentSection,
+  formData,
+  sections,
   handleInputChange,
   handleAddWorkExperience,
   handleRemoveWorkExperience,
-  openPreview
+  openPreview,
 }) {
-  const currentIndex = sections.indexOf(currentSection);
+  const currentIndex = sections.indexOf(currentSection)
 
   const sectionTitlesMap = {
     personalInfo: 'Personal Information',
@@ -25,7 +25,7 @@ function Section({
     workExperience: 'Work Experience',
     technicalSkills: 'Skills',
     languages: 'Languages',
-  };
+  }
 
   const sectionInputsMap = {
     personalInfo: personalInfoInputs,
@@ -33,30 +33,34 @@ function Section({
     workExperience: workExperienceInputs,
     technicalSkills: technicalSkillsInputs,
     languages: languagesInputs,
-  };
+  }
 
   const handleNext = () => {
     if (currentIndex < sections.length - 1) {
-      setCurrentSection(sections[currentIndex + 1]);
+      setCurrentSection(sections[currentIndex + 1])
     }
-  };
+  }
 
   const handlePrevious = () => {
     if (currentIndex > 0) {
-      setCurrentSection(sections[currentIndex - 1]);
+      setCurrentSection(sections[currentIndex - 1])
     }
-  };
+  }
 
   return (
     <section className="min-w-[80vw] min-h-[95svh] bg-sky-900 rounded-lg ms-8 grid p-10">
-      <h1 className="text-2xl text-white mb-4">{sectionTitlesMap[currentSection]}</h1>
+      <h1 className="text-2xl text-white mb-4">
+        {sectionTitlesMap[currentSection]}
+      </h1>
 
       <div className="inputs">
         {currentSection === 'workExperience' ? (
           <>
             {formData.workExperience.map((entry, index) => (
               <div key={index} className="work-experience-entry mb-6">
-                <h2 className="text-lg text-white mb-2">Work Experience {index + 1}</h2>
+                <h2 className="text-lg text-white mb-2">
+                  Work Experience {index + 1}
+                </h2>
                 <Inputs
                   inputFields={sectionInputsMap[currentSection]}
                   sectionData={entry}
@@ -119,7 +123,7 @@ function Section({
         )}
       </div>
     </section>
-  );
+  )
 }
 
-export default Section;
+export default Section
