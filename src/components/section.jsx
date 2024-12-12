@@ -14,7 +14,8 @@ function Section({
   sections, 
   handleInputChange,
   handleAddWorkExperience,
-  handleRemoveWorkExperience
+  handleRemoveWorkExperience,
+  openPreview
 }) {
   const currentIndex = sections.indexOf(currentSection);
 
@@ -47,7 +48,7 @@ function Section({
   };
 
   return (
-    <section className="min-w-[80vw] min-h-[80svh] bg-sky-900 rounded-lg ms-8 grid p-10">
+    <section className="min-w-[80vw] min-h-[95svh] bg-sky-900 rounded-lg ms-8 grid p-10">
       <h1 className="text-2xl text-white mb-4">{sectionTitlesMap[currentSection]}</h1>
 
       <div className="inputs">
@@ -110,7 +111,7 @@ function Section({
 
         {currentIndex === sections.length - 1 && (
           <button
-            onClick={() => console.log("Submit")}
+            onClick={openPreview}
             className="px-4 py-2 rounded bg-blue-500 hover:bg-blue-700 text-white"
           >
             Preview
