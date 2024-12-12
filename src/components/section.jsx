@@ -1,4 +1,4 @@
-import Inputs from './Inputs'
+import Inputs from './inputs'
 import {
   personalInfoInputs,
   educationInputs,
