@@ -1,20 +1,21 @@
-import { useState } from 'react';
-import Inputs from './inputs';
+import Inputs from './Inputs';
 import {
   personalInfoInputs,
   educationInputs,
   workExperienceInputs,
   technicalSkillsInputs,
   languagesInputs,
-  initialState
 } from './data';
 
-function Section() {
-  const sections = ['personalInfo', 'education', 'workExperience', 'technicalSkills', 'languages'];
-  const [currentSection, setCurrentSection] = useState('personalInfo');
-
-  const [formData, setFormData] = useState(initialState);
-
+function Section({ 
+  currentSection, 
+  setCurrentSection, 
+  formData, 
+  sections, 
+  handleInputChange,
+  handleAddWorkExperience,
+  handleRemoveWorkExperience
+}) {
   const currentIndex = sections.indexOf(currentSection);
 
   const sectionTitlesMap = {
@@ -43,55 +44,6 @@ function Section() {
     if (currentIndex > 0) {
       setCurrentSection(sections[currentIndex - 1]);
     }
-  };
-
-  const handleInputChange = (section, fieldName, value, index = null) => {
-    setFormData((prevData) => {
-      if (section === 'workExperience' && index !== null) {
-        const updatedWorkExperience = prevData.workExperience.map((entry, idx) =>
-          idx === index ? { ...entry, [fieldName]: value } : entry
-        );
-
-        return {
-          ...prevData,
-          workExperience: updatedWorkExperience,
-        };
-      }
-
-      return {
-        ...prevData,
-        [section]: {
-          ...prevData[section],
-          [fieldName]: value,
-        },
-      };
-    });
-  };
-
-  const handleAddWorkExperience = () => {
-    setFormData((prevData) => ({
-      ...prevData,
-      workExperience: [
-        ...prevData.workExperience,
-        {
-          companyName: '',
-          positionTitle: '',
-          location: '',
-          jobType: '',
-          mainResponsibilities: '',
-          achievements: '',
-          dateFrom: '',
-          dateUntil: '',
-        },
-      ],
-    }));
-  };
-
-  const handleRemoveWorkExperience = (index) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      workExperience: prevData.workExperience.filter((_, idx) => idx !== index),
-    }));
   };
 
   return (

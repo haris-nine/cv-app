@@ -19,7 +19,6 @@ function Inputs({ inputFields, sectionData, handleInputChange, currentSection })
             className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-100 text-gray-800"
             autoComplete="off"
           />
-
         </div>
       ))}
     </div>
